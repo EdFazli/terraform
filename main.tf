@@ -19,7 +19,7 @@ module "s3_statefile" {
 }
 
 module "dynamodb_tfstate_lock" {
-    source = "terraform-aws-modules/dynamodb-table/aws"
+    source = "./modules/dynamodb-table"
 
     name = "fazli-terraform-statefile-lock"
     hash_key = "LockID"
