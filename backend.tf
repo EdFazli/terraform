@@ -8,6 +8,6 @@ terraform {
         key    = "tf/terraform.tfstate"
         region = "ap-southeast-1"
         encrypt = true
-        dynamodb_table = "fazli-terraform-statefile"
+        dynamodb_table = "fazli-terraform-statefile-lock"
   }
 }
