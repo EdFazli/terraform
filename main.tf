@@ -126,6 +126,11 @@ module "redshift_sg" {
 
   # Allow all rules for all protocols
   egress_rules = ["all-all"]
+
+  tags = {
+    Creator   = "Fazli"
+    Terraform = "True"
+  }
 }
 #--------------------------------SG------------------------------------#
 
@@ -210,5 +215,10 @@ module "redshift_1" {
 
   # IAM Roles
   cluster_iam_roles = ["arn:aws:iam::225367859851:role/developer"]
+
+  tags = {
+    Creator   = "Fazli"
+    Terraform = "True"
+  }
 }
 #-----------------------------REDSHIFT---------------------------------#
