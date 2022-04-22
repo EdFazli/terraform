@@ -113,6 +113,20 @@ module "web_server_sg" {
     Terraform = "True"
   }
 }
+
+module "redshift_sg" {
+  source  = "terraform-aws-modules/security-group/aws//modules/redshift"
+  version = "~> 4.0"
+
+  name   = "redshift-sg"
+  vpc_id = module.prod_vpc.vpc_id
+
+  # Allow ingress rules to be accessed only within current VPC
+  ingress_cidr_blocks = [module.prod_vpc.vpc_cidr_block]
+
+  # Allow all rules for all protocols
+  egress_rules = ["all-all"]
+}
 #--------------------------------SG------------------------------------#
 
 #-----------------------------KEYPAIR----------------------------------#
