@@ -189,5 +189,26 @@ module "bucket_1" {
 #--------------------------------S3------------------------------------#
 
 #-----------------------------REDSHIFT---------------------------------#
+module "redshift_1" {
+  source  = "terraform-aws-modules/redshift/aws"
+  version = "~> 3.0"
 
+  vpc_security_group_ids  = [module.redshift_sg.security_group_id]
+  cluster_identifier      = "redshitf-1"
+  cluster_node_type       = "dc1.large"
+  cluster_number_of_nodes = 1
+
+  cluster_database_name   = "mydb"
+  cluster_master_username = "mydbuser"
+  cluster_master_password = "mySecretPassw0rd"
+
+  # Group parameters
+  wlm_json_configuration = "[{\"query_concurrency\": 5}]"
+
+  # DB Subnet Group Inputs
+  subnets = module.prod-vpc.redshift_subnets
+
+  # IAM Roles
+  cluster_iam_roles = ["arn:aws:iam::225367859851:role/developer"]
+}
 #-----------------------------REDSHIFT---------------------------------#
