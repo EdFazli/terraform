@@ -106,6 +106,11 @@ module "web_server_sg" {
   vpc_id      = module.prod_vpc.vpc_id
 
   ingress_cidr_blocks = ["10.10.0.0/16"]
+
+  tags = {
+    Creator   = "Fazli"
+    Terraform = "True"
+  }
 }
 #--------------------------------SG------------------------------------#
 
@@ -128,7 +133,7 @@ module "key_pair" {
 #-----------------------------KEYPAIR----------------------------------#
 
 #-------------------------------EC2------------------------------------#
-module "instance1" {
+module "instance_1" {
   source  = "./modules/ec2"
 
   name = "Instance-1"
@@ -148,6 +153,23 @@ module "instance1" {
 #-------------------------------EC2------------------------------------#
 
 #--------------------------------S3------------------------------------#
+module "bucket_1" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+
+  bucket                    = "bucket_1"
+  block_public_acls         = true
+  block_public_policy       = true
+  ignore_public_acls        = true
+  restrict_public_buckets   = true
+
+  versioning = {
+    enabled = false
+  }
+
+  tags = {
+      Creator   = "Fazli"
+      Terraform = "True"
+  }
 
 #--------------------------------S3------------------------------------#
 
