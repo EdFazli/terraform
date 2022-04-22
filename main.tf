@@ -13,7 +13,7 @@ module "s3_statefile" {
   }
 
   tags {
-      "Creator" = "Fazli"
+      Creator = "Fazli"
   }
 
 }
@@ -41,7 +41,7 @@ module "dynamodb_tfstate_lock" {
     ]
 
     tags = {
-        "Creator" = "Fazli"
+        Creator = "Fazli"
     }
 }
 
