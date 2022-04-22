@@ -1,3 +1,3 @@
 ###################
-# Variables Value #
+# Variables Values #
 ###################
