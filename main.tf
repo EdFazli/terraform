@@ -79,6 +79,24 @@ data "aws_ami" "amazon_windows" {
 
 #-------------------------------VPC------------------------------------#
 
+#-----------------------------KEYPAIR----------------------------------#
+resource "tls_private_key" "this" {
+  algorithm = "RSA"
+}
+
+module "key_pair" {
+  source = "terraform-aws-modules/key-pair/aws"
+
+  key_name   = "fazli-keypair"
+  public_key = tls_private_key.this.public_key_openssh
+
+  tags = {
+      Creator   = "Fazli"
+      Terraform = "True"
+  }
+}
+#-----------------------------KEYPAIR----------------------------------#
+
 #-------------------------------EC2------------------------------------#
 module "instance1" {
   source  = "./modules/ec2"
