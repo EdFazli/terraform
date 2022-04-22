@@ -12,7 +12,7 @@ module "s3_statefile" {
     enabled = true
   }
 
-  tags {
+  tags = {
       Creator = "Fazli"
   }
 
