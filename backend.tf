@@ -1,7 +1,3 @@
-data "aws_ssm_parameter" "aws_credentials" {
-  name = "/terraform/aws/credentials"
-}
-
 ####################
 # Define Terraform #
 ####################
@@ -13,6 +9,6 @@ terraform {
         region = "ap-southeast-1"
         encrypt = true
         dynamodb_table = "fazli-terraform-statefile-lock"
-        shared_credentials_file = data.aws_ssm_parameter.aws_credentials.value
+        shared_credentials_file = "/Users/edfazli/.aws/credentials"
   }
 }
