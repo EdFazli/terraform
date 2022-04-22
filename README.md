@@ -1,2 +1,2 @@
-# terraform
-This reference repository for terraform project
+# Terraform
+The reference repository for terraform project
