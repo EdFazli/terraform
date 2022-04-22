@@ -1,5 +1,5 @@
 ####################
-# define terraform #
+# Define Terraform #
 ####################
 terraform {
     required_version = ">=1.1"

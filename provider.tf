@@ -3,7 +3,7 @@ data "aws_ssm_parameter" "aws_credentials" {
 }
 
 ###################
-# define provider #
+# Define Provider #
 ###################
 provider "aws" {
   region = var.region
