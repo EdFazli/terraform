@@ -1,6 +1,6 @@
-data "aws_ssm_parameter" "aws_credentials" {
-  name = "/terraform/aws/credentials"
-}
+# data "aws_ssm_parameter" "aws_credentials" {
+#   name = "/terraform/aws/credentials"
+# }
 
 #######################
 # Provider Definition #
