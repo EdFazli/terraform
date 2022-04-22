@@ -24,6 +24,7 @@ module "dynamodb_tfstate_lock" {
     name = "fazli-terraform-statefile-lock"
     hash_key = "LockID"
     billing_mode = "PAY_PER_REQUEST"
+    table_class = "STANDARD_INFREQUENT_ACCESS"
 
     attributes = [
         {
