@@ -79,6 +79,18 @@ data "aws_ami" "amazon_windows" {
 
 #-------------------------------VPC------------------------------------#
 
+#--------------------------------SG------------------------------------#
+module "web_server_sg" {
+  source = "terraform-aws-modules/security-group/aws//modules/http-80"
+
+  name        = "web-server"
+  description = "Security group for web-server with HTTP ports open within VPC"
+  vpc_id      = module.prod-vpc.vpc_id
+
+  ingress_cidr_blocks = ["10.10.0.0/16"]
+}
+#--------------------------------SG------------------------------------#
+
 #-----------------------------KEYPAIR----------------------------------#
 resource "tls_private_key" "this" {
   algorithm = "RSA"
@@ -105,9 +117,9 @@ module "instance1" {
 
   ami                    = data.aws_ami.amazon_windows.id
   instance_type          = "t2.micro"
-  key_name               = "user1"
+  key_name               = "fazli-keypair"
   monitoring             = false
-  vpc_security_group_ids = ["sg-12345678"]
+  vpc_security_group_ids = [module.web_server_sg.security_group_id]
   subnet_id              = "subnet-eddcdzz4"
 
   tags = {
