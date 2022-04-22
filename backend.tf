@@ -9,6 +9,6 @@ terraform {
         region = "ap-southeast-1"
         encrypt = true
         dynamodb_table = "fazli-terraform-statefile-lock"
-        shared_credentials_file = "/Users/edfazli/.aws/credentials"
+        shared_credentials_file = "$HOME/.aws/credentials"
   }
 }

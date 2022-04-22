@@ -22,22 +22,13 @@ module "dynamodb_tfstate_lock" {
     source = "terraform-aws-modules/dynamodb-table/aws"
 
     name = "fazli-terraform-statefile-lock"
-    hash_key = "id"
-    range_key = "title"
+    hash_key = "LockID"
 
     attributes = [
         {
-            name = "id"
-            type = "N"
-        },
-        {
-            name = "title"
+            name = "LockID"
             type = "S"
         },
-        {
-            name = "age"
-            type = "N"
-        }
     ]
 
     tags = {
