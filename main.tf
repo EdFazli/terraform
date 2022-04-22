@@ -7,6 +7,8 @@ module "s3_statefile" {
 
   bucket                    = "fazli-terraform-statefile"
   block_public_acls         = true
+  block_public_policy       = true
+  ignore_public_acls        = true
   restrict_public_buckets   = true
 
   versioning = {
