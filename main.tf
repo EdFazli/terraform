@@ -138,7 +138,7 @@ module "instance1" {
   key_name               = "fazli-keypair"
   monitoring             = false
   vpc_security_group_ids = [module.web_server_sg.security_group_id]
-  subnet_id              = "subnet-eddcdzz4"
+  subnet_id              = module.prod_vpc.private_subnets[0]
 
   tags = {
     Creator   = "Fazli"
