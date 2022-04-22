@@ -4,6 +4,12 @@ variable "create_table" {
   default     = true
 }
 
+variable "table_class" {
+    description = "Define the table class [STANDARD | STANDARD_INFREQUENT_ACCESS]"
+    type        = string
+    default     = ""
+}
+
 variable "name" {
   description = "Name of the DynamoDB table"
   type        = string
